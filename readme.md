@@ -12,7 +12,13 @@ While attending the Rijksacademie open day in 2018 I got very impressed with the
   
 Corpus is a large text file which will be used as a source for the script to generate new artwork captions. First goal is to get all the captions from the Rijksacdemie Open day website [https://www.rijksakademie.nl/NL/rijksakademieopen/](https://www.rijksakademie.nl/NL/rijksakademieopen/). This can be done manually, but I am going to scrape it, using [Parsehub](https://www.parsehub.com/) and [Beautifulsoup](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe). First I am getting the list of all URL’s to the artists page using Parsehub (see artist-urls.csv for the outcome) and exporting it as CSV. Then I install Beautifulsoup. The list of urls is then used in a python script to scrape the part of each link which contains information about the artist. (See rijkssoup.py). I have troubles writing into a text file from the script, since the script keeps overriding the output after going through each link. The dumbest solution seems to be the easiest: I save my session as a text file.  These are the steps (for Mac):
 
+
+
 1. Launch terminal
+2. Istall [Beautifulsoup](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe). 
+
+	pip install beautifulsoup4
+	
 2. Change directory to the folder where the project is stored (cd + drag your folder into the terminal window)
 3. Type ‘python rijkssoup.py’
 4. Press enter
@@ -49,6 +55,10 @@ Now as I have my corpus, I am going to open it in Ulysses (any text editor of ch
 
 
 #### 3.The script  
+
+Step 0 - install [markovify](https://github.com/jsvine/markovify)
+
+	pip install markovify 
 
 
 1. To get the right length of the output, I have to take a look at the unedited corpus (only-captions.txt) to see how many characters and sentences a caption has on average. The sentences in Art English are quite long, so I would have 5 sentences for one caption. Here is the script I will use. 
